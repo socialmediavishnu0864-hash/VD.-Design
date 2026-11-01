@@ -1,0 +1,264 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vishnu Datt | Design Portfolio</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+ background:#0b0b0d;
+ color:white;
+ font-family:Arial,sans-serif;
+}
+header{
+ padding:22px 7%;
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+ background:#111;
+ position:sticky;
+ top:0;
+ z-index:10;
+ border-bottom:1px solid #333;
+}
+.logo{font-size:23px;font-weight:bold}
+.logo span{color:#d9b46c}
+nav a{
+ color:white;text-decoration:none;
+ margin-left:20px;font-size:14px
+}
+.hero{
+ padding:100px 7%;
+ min-height:430px;
+ background:radial-gradient(circle at 80%,#49371e,transparent 50%);
+}
+.hero small{color:#d9b46c;letter-spacing:4px}
+.hero h1{font-size:clamp(45px,8vw,85px);margin:20px 0}
+.hero h1 span{color:#d9b46c}
+.hero p{color:#aaa;line-height:1.8;max-width:550px}
+.btn{
+ display:inline-block;
+ margin-top:25px;
+ padding:13px 22px;
+ border:1px solid #d9b46c;
+ color:white;text-decoration:none;
+ border-radius:5px;
+}
+section{padding:65px 7%}
+h2{font-size:35px;margin:12px 0}
+.subtitle{color:#d9b46c;letter-spacing:3px;font-size:12px}
+.filters{
+ display:flex;flex-wrap:wrap;gap:10px;
+ margin:25px 0;
+}
+.filters button{
+ background:#191919;color:white;
+ border:1px solid #444;
+ padding:10px 15px;border-radius:30px;
+ cursor:pointer;
+}
+.filters button.active{
+ background:#d9b46c;color:#111;
+}
+.gallery{
+ display:grid;
+ grid-template-columns:repeat(3,1fr);
+ gap:20px;
+}
+.card{
+ background:#171719;
+ border:1px solid #333;
+ border-radius:10px;
+ overflow:hidden;
+}
+.card img{
+ width:100%;height:300px;
+ object-fit:contain;background:#080808;
+ cursor:pointer;
+}
+.card h3{padding:14px;font-size:15px}
+.about{background:#151518}
+.about p{
+ color:#aaa;line-height:1.9;
+ max-width:700px;margin-top:15px;
+}
+.contact{text-align:center}
+.contact p{color:#aaa;margin:15px}
+.contact a{margin:10px}
+footer{
+ padding:25px;text-align:center;
+ color:#888;border-top:1px solid #333;
+}
+#preview{
+ display:none;position:fixed;inset:0;
+ background:#000e;z-index:20;
+ align-items:center;justify-content:center;
+ padding:15px;
+}
+#preview img{
+ max-width:95%;max-height:90vh;
+ object-fit:contain;
+}
+#preview button{
+ position:absolute;right:20px;top:10px;
+ background:none;color:white;border:none;
+ font-size:40px;cursor:pointer;
+}
+@media(max-width:800px){
+ .gallery{grid-template-columns:repeat(2,1fr)}
+ .card img{height:250px}
+}
+@media(max-width:480px){
+ header{padding:18px 5%}
+ nav a{margin-left:8px;font-size:12px}
+ .hero{padding:75px 6%}
+ section{padding:50px 6%}
+ .gallery{gap:10px}
+ .card img{height:190px}
+ .card h3{font-size:12px}
+ h2{font-size:28px}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+ <div class="logo">VD<span>.</span> DESIGN</div>
+ <nav>
+  <a href="#work">Work</a>
+  <a href="#about">About</a>
+  <a href="#contact">Contact</a>
+ </nav>
+</header>
+
+<div class="hero">
+ <small>GRAPHIC DESIGN PORTFOLIO</small>
+ <h1>Ideas made<br><span>visual.</span></h1>
+ <p>
+ Creative posters, festival designs, promotional artwork
+ and visual graphics. Explore my creative work.
+ </p>
+ <a href="#work" class="btn">Explore My Work ↘</a>
+</div>
+
+<section id="work">
+ <div class="subtitle">MY CREATIONS</div>
+ <h2>My Design Work</h2>
+
+ <div class="filters" id="filters"></div>
+ <div class="gallery" id="gallery"></div>
+</section>
+
+<section class="about" id="about">
+ <div class="subtitle">ABOUT ME</div>
+ <h2>Vishnu Datt</h2>
+ <p>
+ I am a creative graphic designer specializing in
+ festival posters, birthday designs, promotional graphics,
+ business creatives and typography.
+ This portfolio showcases my selected creative projects.
+ </p>
+</section>
+
+<section class="contact" id="contact">
+ <div class="subtitle">LET'S WORK TOGETHER</div>
+ <h2>Have a Project?</h2>
+ <p>Contact me for design orders and enquiries.</p>
+
+ <a class="btn"
+ href="https://wa.me/919129033788"
+ target="_blank">WhatsApp</a>
+
+ <a class="btn"
+ href="https://instagram.com/postverse.2"
+ target="_blank">Instagram</a>
+</section>
+
+<footer>
+ © 2026 Vishnu Datt | All Rights Reserved | 9129033788
+</footer>
+
+<div id="preview" onclick="closePreview()">
+ <button onclick="closePreview()">×</button>
+ <img id="bigImage">
+</div>
+
+<script>
+const designs = [
+ ["Navratri Special Offer","Festival & Religious"],
+ ["Food Promotion Poster","Business & Promotional"],
+ ["VD Design Creative","Branding & Portfolio"],
+ ["Children's Day Creative","Festival & Religious"],
+ ["Birthday Poster","Birthday & Events"],
+ ["Essay Competition Poster","Business & Promotional"],
+ ["Entry Craft Team Promotion","Business & Promotional"],
+ ["Rath Yatra Poster","Festival & Religious"],
+ ["Entry Craft 3D Typography","Creative Typography"],
+ ["Guru Purnima Creative","Festival & Religious"]
+];
+
+const categories = ["All",...new Set(designs.map(x=>x[1]))];
+
+const filters=document.getElementById("filters");
+const gallery=document.getElementById("gallery");
+
+function showFilters(selected="All"){
+ filters.innerHTML="";
+ categories.forEach(cat=>{
+  const btn=document.createElement("button");
+  btn.textContent=cat;
+  btn.className=cat===selected?"active":"";
+  btn.onclick=()=>{
+   showFilters(cat);
+   showGallery(cat);
+  };
+  filters.appendChild(btn);
+ });
+}
+
+function showGallery(category="All"){
+ gallery.innerHTML="";
+ designs.forEach((item,i)=>{
+  if(category!=="All" && item[1]!==category)return;
+
+  const card=document.createElement("div");
+  card.className="card";
+
+  const img=document.createElement("img");
+  img.src="images/design-"+String(i+1).padStart(2,"0")+".jpg";
+  img.alt=item[0];
+  img.loading="lazy";
+  img.onclick=()=>openPreview(img.src);
+
+  const title=document.createElement("h3");
+  title.textContent=item[0];
+
+  card.appendChild(img);
+  card.appendChild(title);
+  gallery.appendChild(card);
+ });
+}
+
+function openPreview(src){
+ document.getElementById("bigImage").src=src;
+ document.getElementById("preview").style.display="flex";
+}
+
+function closePreview(){
+ document.getElementById("preview").style.display="none";
+}
+
+document.addEventListener("keydown",e=>{
+ if(e.key==="Escape")closePreview();
+});
+
+showFilters();
+showGallery();
+</script>
+
+</body>
+</html>
