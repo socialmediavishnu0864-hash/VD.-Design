@@ -177,7 +177,7 @@ const designs = [
 },
 
 {
- image:"images/fastival .jpg",
+ image:"images/fastival.jpg",
  title:"Children's Day Creative",
  category:"Festival & Religious"
 },
@@ -207,7 +207,7 @@ const designs = [
 },
 
 {
- image:"images/advartige .jpg",
+ image:"images/advartige.jpg",
  title:"Entry Craft Team Promotion",
  category:"Business & Promotional"
 },
@@ -230,7 +230,7 @@ const designs = [
    8. CATEGORY FILTER SYSTEM
 ===================================== */
 
-const categories=["All",...new Set(designs.map(x=>x.category))];
+const categories=[...new Set(designs.map(x=>x.category))];
 
 const filters=document.getElementById("filters");
 const gallery=document.getElementById("gallery");
